@@ -11,7 +11,7 @@
 #-------------------------------------------------------------------------
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 echo "-------------------------------------------------"
-echo "Setting up mirrors for optimal download          "
+echo "-----Setting up mirrors for optimal download-----"
 echo "-------------------------------------------------"
 iso=$(curl -4 ifconfig.co/country-iso)
 timedatectl set-ntp true
@@ -29,8 +29,8 @@ echo -e " | | | || |\ \ | \__/\| | | | |_\ \| |___| |\  || |___| |\ \ _| |_| |\ 
 echo -e " \_| |_/\_| \_| \____/\_| |_/\____/\____/\_| \_/\____/\_| \_|\___/\_| \_/ "
 echo -e "                             ARCHTITUS but mine                           "
 echo -e "--------------------------------------------------------------------------"
-echo -e "-Setting up $iso mirrors for faster downloads"
-echo -e "-------------------------------------------------------------------------"
+echo -e "---------------Setting up $iso mirrors for faster downloads---------------"
+echo -e "--------------------------------------------------------------------------"
 
 reflector -a 48 -c $iso -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist
 mkdir /mnt
@@ -104,7 +104,7 @@ if ! grep -qs '/mnt' /proc/mounts; then
 fi
 
 echo "--------------------------------------"
-echo "-- Arch Install on Main Drive       --"
+echo "-----Arch Install on Main Drive-------"
 echo "--------------------------------------"
 pacstrap /mnt base base-devel linux linux-firmware vim nano sudo archlinux-keyring wget libnewt --noconfirm --needed
 genfstab -U /mnt >> /mnt/etc/fstab
